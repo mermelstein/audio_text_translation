@@ -8,6 +8,6 @@ prompt_text = "translate the following text into Mandarin Chinese: "
 
 def translate(text):
     response = openai.Completion.create(
-        model="text-davinci-003", prompt=prompt_text + text, temperature=0, max_tokens=7
+        model="text-davinci-003", prompt=prompt_text + text, temperature=0, max_tokens=200
     )
     return response["choices"][0]["text"]
