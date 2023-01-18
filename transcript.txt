@@ -1,0 +1,1 @@
+{'channel_index': [0, 1], 'duration': 2.13, 'start': 12.43, 'is_final': True, 'speech_final': True, 'channel': {'alternatives': [{'transcript': '', 'confidence': 0.0, 'words': []}]}, 'metadata': {'request_id': '10cb309d-f0c8-4dcf-904b-ac9b4f0514fb', 'model_info': {'name': 'general', 'version': '2022-01-18.1', 'tier': 'base'}, 'model_uuid': 'c12089d0-0766-4ca0-9511-98fd2e443ebd'}}

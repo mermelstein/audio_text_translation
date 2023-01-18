@@ -32,9 +32,10 @@
 
             socket.onmessage = (message) => {
                 const received = message.data
-                if (received) {
+                if (received && received.length > 0) {
                     console.log(received)
                     document.querySelector('#transcript').textContent += ' ' + received
+                    // document.querySelector('#transcript').innerHTML += `<p>${received}</p>`
                 }
            }
 
