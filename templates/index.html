@@ -2,11 +2,23 @@
 <html>
     <head>
         <title>Live Transcription</title>
+        <style>
+            .container {
+                display: flex;
+            }
+            .transcript-container {
+                flex: 1;
+                padding: 1rem;
+            }
+        </style>
     </head>
     <body>
         <h1>Transcribe and Translate Audio</h1>
         <p id="status">Connection status will go here</p>
-        <p id="transcript"></p>
+        <div class="container">
+            <div id="transcript" class="transcript-container"></div>
+            <div id="translated" class="transcript-container"></div>
+        </div>
 
         <script>
                navigator.mediaDevices.getUserMedia({ audio: true }).then((stream) => {
@@ -30,12 +42,12 @@
             mediaRecorder.start(250)
             }
 
-            socket.onmessage = (message) => {
-                const received = message.data
-                if (received && received.length > 0) {
+            socket.onmessage = async (message) => {
+                const received = JSON.parse(message.data)
+                if (received) {
                     console.log(received)
-                    document.querySelector('#transcript').textContent += ' ' + received
-                    // document.querySelector('#transcript').innerHTML += `<p>${received}</p>`
+                    document.querySelector('#transcript').innerHTML += `<p>${received.original}</p>`
+                    document.querySelector('#translated').innerHTML += `<p>${received.translated}</p>`
                 }
            }
 

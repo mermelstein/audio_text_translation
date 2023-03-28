@@ -1,16 +1,18 @@
 import os
 import openai
+from functools import lru_cache
 
-# Load your API key from an environment variable or secret management service
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-english_prompt_text = "translate the following American English text into Mandarin Chinese: "
+english_chinese_text = "translate the following American English text into Mandarin Chinese: "
+english_spanish_text = "translate the following American English text into Spanish: "
 spanish_prompt_text = "translate the following Spanish text into American English: "
 chinese_prompt_text = "translate the following Mandarin Chinese text into English: "
 
+@lru_cache(maxsize=1000)
 def translate(text, language_var):
     if language_var == 'en':
-        prompt_text = english_prompt_text
+        prompt_text = english_spanish_text
     elif language_var == 'es':
         prompt_text = spanish_prompt_text
     elif language_var == 'zh':
